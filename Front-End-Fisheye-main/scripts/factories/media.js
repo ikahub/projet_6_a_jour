@@ -1,5 +1,5 @@
 function photoFactory(data) {
-    const { id, name, portrait, city, country, tagline } = data;
+    const { id, name, portrait, city, country, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
@@ -8,7 +8,10 @@ function photoFactory(data) {
     function getPhotoDetailsCardDOM() {
         const link = `photographer.html?id=${id}`;
         const articleDetail = document.createElement( 'article' );
-        
+
+        const divPrice = document.createElement('div')
+
+        const fixedPrice = document.createElement('p')
         
         const h1 = document.createElement( 'h1' );
         const pLink = document.createElement('p');
@@ -20,18 +23,25 @@ function photoFactory(data) {
         p.classList.add('tagline')
         pun.classList.add('city-country')
 
+        divPrice.id = 'totalLikes'
         
+        fixedPrice.id = 'fixedPrice'
+
+        fixedPrice.innerHTML = price
 
         p.innerHTML = tagline;
         pLink.innerHTML = link;
         h1.innerText = name;
         pun.innerText = city +','+' '+ country;
         pdeux.innerText = country;
+        fixedPrice.innerHTML = price
 
         articleDetail.appendChild(h1);
         
         articleDetail.appendChild(pun);
         articleDetail.appendChild(p);
+        articleDetail.appendChild(divPrice)
+        articleDetail.appendChild(fixedPrice)
 
         //console.log(articlePhotographer)
 
@@ -42,7 +52,7 @@ function photoFactory(data) {
 }
 
 function pPfactory(medias){
-    const {id, portrait} = medias;
+    const {id, portrait, name} = medias;
 
     const picture = `assets/photographers/${portrait}`;
 
@@ -51,6 +61,7 @@ function pPfactory(medias){
         const img = document.createElement('img');
         img.classList.add('photographer-img');
         img.setAttribute("src", picture);
+        img.setAttribute("alt", name)
         articlePp.appendChild(img);
 
         return (articlePp);
@@ -61,31 +72,23 @@ function pPfactory(medias){
 function mediaFactory(medias) {
     const { date, id, photographerId, image, video, likes, title } = medias;
 
-
     const imgMedia = `assets/images/${image}`;
     const videoMedia = `assets/videos/${video}`;
-    
-    //console.log(videoMedia)
-    //console.log(imgMedia)
 
     function getMediaCardDOM(){
         const articleMedia = document.createElement('article');
+
         const divTitleLikes = document.createElement('div')
         
         const img = document.createElement('img');
         const videos = document.createElement('video');
         const source = document.createElement('source');
-        const pun = document.createElement('button');
+        const pun = document.createElement('p');
         const pdeux = document.createElement('p');
-        const closeSetup = document.getElementById('close_onclick')
-        //const divHeart = document.createElement('div')
-        const ptrois = document.createElement('p')
-
-        //divHeart.id = 'iconDiv'
 
         articleMedia.id = 'article_media'
-
         divTitleLikes.id = 'divTitleLikes'
+        articleMedia.classList.add('article-media')
 
         videos.classList.add('media_img')
 
@@ -94,12 +97,12 @@ function mediaFactory(medias) {
         pdeux.classList.add('title');
 
         pdeux.innerHTML = title;
-        
-        //divHeart.innerHTML = '<i class="fas fa-heart"></i>';
-        pun.innerHTML = likes //+ " " + '<i class="fas fa-heart"></i>' ;
+        pun.setAttribute("data-media-id", id)
+        pun.innerHTML = likes + " " + '<i class="far fa-heart"></i>' ;
 
         if(image){
             img.setAttribute("src", imgMedia);
+            img.setAttribute("alt", title)
             img.id = id
             articleMedia.appendChild(img);
         }
@@ -112,15 +115,6 @@ function mediaFactory(medias) {
         articleMedia.appendChild(divTitleLikes)
         divTitleLikes.appendChild(pdeux);
         divTitleLikes.appendChild(pun);
-        divTitleLikes.appendChild(ptrois)
-        
-        /////// Increment Likes ///////
-        
-        /////// REMOVE LIGHTBOX ///////
-
-        closeSetup.addEventListener('click', () => {
-            lightbox.classList.remove('active')
-        })
 
         /////// RETURN ///////
 
