@@ -7,43 +7,60 @@ function photoFactory(data) {
 
     function getPhotoDetailsCardDOM() {
         const link = `photographer.html?id=${id}`;
+
+        const photoDetail = document.querySelector('.photographer_detail')
+        
         const articleDetail = document.createElement( 'article' );
-
-        const divPrice = document.createElement('div')
-
-        const fixedPrice = document.createElement('p')
+        const photographerDetail = document.createElement('div')
+        const btnForm = document.createElement('button')
         
         const h1 = document.createElement( 'h1' );
-        const pLink = document.createElement('p');
+       
         const p = document.createElement( 'p' );
         const pun = document.createElement( 'p' );
-        const pdeux = document.createElement( 'p' );
+
+        const img = document.createElement('img');
         
+        
+        img.setAttribute("src", picture);
+        img.setAttribute("alt", name)
+        
+        btnForm.classList.add('contact_btn')
+        img.classList.add('photographer-img');
         h1.classList.add('photograph_name')
         p.classList.add('tagline')
         pun.classList.add('city-country')
 
-        divPrice.id = 'totalLikes'
-        
-        fixedPrice.id = 'fixedPrice'
+        btnForm.setAttribute("onclick", "displayModal()")
 
-        fixedPrice.innerHTML = price
-
+        btnForm.innerText = "Contactez-moi"
         p.innerHTML = tagline;
-        pLink.innerHTML = link;
         h1.innerText = name;
         pun.innerText = city +','+' '+ country;
-        pdeux.innerText = country;
+
+        
+        photographerDetail.appendChild(h1);
+        photographerDetail.appendChild(pun);
+        photographerDetail.appendChild(p);
+        articleDetail.appendChild(photographerDetail)
+        articleDetail.appendChild(btnForm)
+        articleDetail.appendChild(img);
+
+
+        /* 
+        Footer price 
+        */
+
+        const divPrice = document.createElement('div')
+        const fixedPrice = document.createElement('p')
+        
+        fixedPrice.id = 'fixedPrice'
+        divPrice.id = 'totalLikes'
+
         fixedPrice.innerHTML = price
 
-        articleDetail.appendChild(h1);
-        
-        articleDetail.appendChild(pun);
-        articleDetail.appendChild(p);
-        articleDetail.appendChild(divPrice)
-        articleDetail.appendChild(fixedPrice)
-
-        //console.log(articlePhotographer)
+        photoDetail.appendChild(divPrice)
+        photoDetail.appendChild(fixedPrice)
 
         return (articleDetail);
     }
@@ -51,23 +68,6 @@ function photoFactory(data) {
     return { id, name, picture, getPhotoDetailsCardDOM}
 }
 
-function pPfactory(medias){
-    const {id, portrait, name} = medias;
-
-    const picture = `assets/photographers/${portrait}`;
-
-    function displayPortrait(){
-        const articlePp = document.createElement( 'article' );
-        const img = document.createElement('img');
-        img.classList.add('photographer-img');
-        img.setAttribute("src", picture);
-        img.setAttribute("alt", name)
-        articlePp.appendChild(img);
-
-        return (articlePp);
-    }
-    return { id, displayPortrait}
-}
 
 function mediaFactory(medias) {
     const { date, id, photographerId, image, video, likes, title } = medias;

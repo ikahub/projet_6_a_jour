@@ -14,14 +14,12 @@ class PhotographerApp {
         ////////Récupération du photographe via son ID/////////
         this.photographer = await this.usersApi.getPhotographer(this.id);
         this.medias = await this.usersApi.getMedias(this.id);
+        console.log(this.photographer)
         
         ////////display de .photographer_detail et de son contenu///////
         this.$personnalDetails.innerHTML = "";
         const photoDetails = photoFactory(this.photographer)
         this.$personnalDetails.appendChild(photoDetails.getPhotoDetailsCardDOM())
-
-        const photoPp = pPfactory(this.photographer)
-        this.$personnalDetails.appendChild(photoPp.displayPortrait())
 
         ////////display de #personnal_galerie et de son contenu/////////
         this.displayPhotographers()
@@ -52,7 +50,6 @@ class PhotographerApp {
 
         }
 
-
         ['click', 'keydown'].forEach(evType => {
             const customHandler = evType === 'keydown' ? ev => {
             if (ev.key === 'ArrowLeft') previousHandler()
@@ -63,11 +60,6 @@ class PhotographerApp {
             previousSetup.addEventListener(evType, customHandler)
         }
         })
-    
-
-
-
-
 
         /////// NEXT LIGHTBOX ////////
         const nextSetup = document.getElementById('next')
@@ -75,12 +67,10 @@ class PhotographerApp {
         const nextHandler = ev => {
             const index = this.medias.indexOf(this.medias.find(m => m.id == this.selectedMedia))
             const newIndex = index == this.medias.length -1 ? 0 : index +1
-            console.log(newIndex)
-            const lightbox = document.getElementById('lightbox')
+
             const imageLight = document.getElementById('imageLightbox')
             const videoLight = document.getElementById('videoLightbox')
 
-            
             this.selectedMedia = this.medias[newIndex].id
 
             if(this.medias[newIndex].image){
@@ -95,7 +85,6 @@ class PhotographerApp {
                 imageLight.style.display = 'none'
             }
         }
-
 
         ['click', 'keydown'].forEach(evType => {
             const customHandler = evType === 'keydown' ? ev => {
@@ -122,10 +111,11 @@ class PhotographerApp {
                     if(a.date > b.date) {
                         return 1;
                     }
+                    return 0
+                    //return a.date < b.date ? -1 : a.date > b.date ? 1 : 0
                 })
                 break
                 //this.medias.sort((a, b) => b.date - a.date)
-                break
             case 'title' :
                 this.medias.sort(function(a, b){
                     if(a.title < b.title) { 
@@ -134,6 +124,7 @@ class PhotographerApp {
                     if(a.title > b.title) {
                         return 1;
                     }
+                    return 0
                 })
                 break
             default : 
@@ -199,9 +190,7 @@ class PhotographerApp {
                 lightbox.appendChild(imageLight)
 
             })
-        })
-        
-        
+        })  
     }
     
     ////// TOTAL LIKES COUNT //////
@@ -214,14 +203,13 @@ class PhotographerApp {
     }
 
     ////// Display filtered Medias //////
+
     displayFilteredMedias(){
         const onDate = document.getElementById('filter')
         onDate.addEventListener('change', (e) => {
             return this.displayPhotographers(e.target.value)
         })
     }
-    
-    
 }
 
 const photographerApp = new PhotographerApp()
@@ -233,7 +221,6 @@ const handler = ev => {
 	lightbox.classList.remove('active')
 }
 
-
 ['click', 'keydown'].forEach(evType => {
     const customHandler = evType === 'keydown' ? ev => {
       if (ev.key === 'Escape') handler()
@@ -244,5 +231,3 @@ const handler = ev => {
     closeSetup.addEventListener(evType, customHandler)
 }
 })
-
-
