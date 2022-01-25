@@ -1,0 +1,105 @@
+body {
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 4rem;
+}
+
+h1 {
+  color: #901C1C;
+  margin-right: 4rem;
+  margin-left: 4rem;
+}
+
+.logo {
+  height: 2rem;
+  margin-left: 4rem;
+}
+
+.photographer_section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 5rem;
+  margin-left: 10%;
+}
+
+.photographer_section article {
+  padding: 0rem;
+  width: 25rem;
+  justify-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.photographer_section article h2 {
+  color: #D3573C;
+  font-size: 2rem;
+  text-align: center;
+  margin: 0;
+}
+
+.photographer_section article img {
+  margin-bottom: 1rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+}
+
+.photographer_section article .city-country {
+  margin: 0;
+  color: #D3573C;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.photographer_section article .tagline {
+  margin: 0;
+  font-size: 1rem;
+  text-align: center;
+  margin: 0;
+}
+
+.photographer_section article .price {
+  color: #757575;
+  margin: 0;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#search-photographer, #search-photographer:focus, #search-photographer:active, #search-photographer:target {
+  width: 20%;
+  height: 2rem;
+  border: solid 3px #D3573C;
+  border-radius: 10px;
+}
+/*# sourceMappingURL=style.css.map */
