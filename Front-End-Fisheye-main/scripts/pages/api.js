@@ -4,7 +4,6 @@ class userApi {
      * @param {string} url 
      */
     constructor(url) {
-        //super(url)
         this._url = url
     }
 
@@ -19,7 +18,6 @@ class userApi {
         const json = await data.json()
         const photographer = json.photographers.find(p => p.id === parseInt(id))
         photographer.medias = json.media.filter(m => m.photographerId === parseInt(id))
-        //console.log(photographer.medias)
         return photographer
     }
     async getMedias(id){
@@ -27,7 +25,6 @@ class userApi {
         const json = await data.json()
         const photographer = json.photographers.find(p => p.id === parseInt(id))
         photographer.medias = json.media.filter(m => m.photographerId === parseInt(id))
-        //console.log(photographer.medias)
         return photographer.medias
     }
 }

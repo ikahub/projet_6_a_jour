@@ -3,8 +3,6 @@ function photoFactory(data) {
 
     const picture = `assets/photographers/${portrait}`;
 
-    console.log(picture)
-
     function getPhotoDetailsCardDOM() {
         const link = `photographer.html?id=${id}`;
 

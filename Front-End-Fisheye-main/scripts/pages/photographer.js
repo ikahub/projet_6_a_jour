@@ -14,7 +14,6 @@ class PhotographerApp {
         ////////Récupération du photographe via son ID/////////
         this.photographer = await this.usersApi.getPhotographer(this.id);
         this.medias = await this.usersApi.getMedias(this.id);
-        console.log(this.photographer)
         
         ////////display de .photographer_detail et de son contenu///////
         this.$personnalDetails.innerHTML = "";
@@ -31,7 +30,6 @@ class PhotographerApp {
         const previousHandler = ev => {
             const index = this.medias.indexOf(this.medias.find(m => m.id == this.selectedMedia))
             const newIndex = index == 0 ? this.medias.length -1 : index -1
-            console.log(newIndex)
             const imageLight = document.getElementById('imageLightbox')
             const videoLight = document.getElementById('videoLightbox')
 
@@ -112,10 +110,8 @@ class PhotographerApp {
                         return 1;
                     }
                     return 0
-                    //return a.date < b.date ? -1 : a.date > b.date ? 1 : 0
                 })
                 break
-                //this.medias.sort((a, b) => b.date - a.date)
             case 'title' :
                 this.medias.sort(function(a, b){
                     if(a.title < b.title) { 
@@ -134,7 +130,6 @@ class PhotographerApp {
         this.$personnalGaleries.innerHTML = "";
         this.medias.forEach(media => {
             const photoGaleries = mediaFactory(media)
-            //console.log(mediaFactory(media))
             this.$personnalGaleries.appendChild(photoGaleries.getMediaCardDOM())
         });
 
@@ -152,7 +147,6 @@ class PhotographerApp {
                             media.likes++
                             media.isIncremented = true
                         }
-                        //like.innerHTML = media.likes + ' <i class="fas fa-heart"></i>';
                         like.innerHTML = `${media.likes} <i class="fa${media.isIncremented?"s":"r"} fa-heart"></i>`
                         this.getTotalLikesCount()
                     }
@@ -162,7 +156,6 @@ class PhotographerApp {
         })
 
         const mediasArray = Array.from(document.getElementsByClassName('media_img'))
-        console.log(mediasArray)
         mediasArray.forEach(media => {
             media.addEventListener('click', () => {
                 const lightbox = document.getElementById('lightbox')

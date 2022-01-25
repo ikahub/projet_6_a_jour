@@ -2,14 +2,10 @@ class App {
     constructor(){
         this.$usersCards = document.querySelector('.photographer_section')
         this.usersApi = new userApi('data/photographers.json')
-        console.log(this.usersApi)
-
     }
     async main() {
         this.users = await this.usersApi.getUsers();
-        console.log(this.users)
         this.filteredUsers = this.users;
-        console.log(this.filteredUsers)
         this.displayPhotographers()   
 
         const searchInput = document.getElementById('search-photographer');
