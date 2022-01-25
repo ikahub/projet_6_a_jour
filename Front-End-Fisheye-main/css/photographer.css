@@ -12,6 +12,41 @@ body {
   display: none;
 }
 
+@media (max-width: 700px) {
+  .contact_btn {
+    margin: 0 30%;
+    width: 49.5%;
+    padding: 0;
+  }
+  .detail article {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .photographer-img {
+    margin: 1rem 33%;
+    width: 10rem;
+    height: 10rem;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 50%;
+    position: none;
+  }
+  #filter-div {
+    margin: 15rem 10%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  #filter-div #filter {
+    padding: 1rem;
+  }
+}
+
 #main .photograph-header {
   background-color: #FAFAFA;
   height: 10rem;
@@ -32,39 +67,37 @@ body {
   height: 100%;
 }
 
-#main .photograph-header .photographer_detail .details article {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-#main .photograph-header .photographer_detail .photograph_name {
-  color: #D3573C;
-  font-size: 2rem;
-  margin: 0;
-}
-
-#main .photograph-header .photographer_detail .city-country {
-  color: #901C1C;
-  font-size: 1.5rem;
-}
-
-#main .photograph-header .photographer_detail .tagline {
-  color: #525252;
-}
-
-#main .photograph-header .photographer_detail img {
-  width: 10rem;
-  height: 10rem;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 50%;
+@media (min-width: 701px) {
+  #main .photograph-header .photographer_detail .details article {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #main .photograph-header .photographer_detail .photograph_name {
+    color: #D3573C;
+    font-size: 2rem;
+    margin: 0;
+  }
+  #main .photograph-header .photographer_detail .city-country {
+    color: #901C1C;
+    font-size: 1.5rem;
+  }
+  #main .photograph-header .photographer_detail .tagline {
+    color: #525252;
+  }
+  #main .photograph-header .photographer_detail img {
+    width: 10rem;
+    height: 10rem;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 50%;
+  }
 }
 
 #main .photograph-header .photographer_detail #fixedPrice {
@@ -258,14 +291,34 @@ form input {
 }
 
 #filter-div {
-  margin: 1rem 10%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  font-weight: bold;
 }
 
-#filter-div #filter {
+#filter-div .intro_filtre {
+  padding-right: 2rem;
+}
+
+#filter, option {
+  font-weight: bold;
+  background-color: #901C1C;
+  color: white;
   padding: 1rem;
+}
+
+#filter_popularity {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding: 2rem;
+  border: 5px solid white;
+}
+
+@media (min-width: 701px) {
+  #filter-div {
+    margin: 5rem 10%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 
 #divTitleLikes {
