@@ -1,4 +1,5 @@
 //Mettre le code JavaScript lié à la page photographer.html
+
 class PhotographerApp {
     constructor(){
         this.$personnalDetails = document.querySelector('.details')
@@ -12,19 +13,23 @@ class PhotographerApp {
     }
     async main(){
         ////////Récupération du photographe via son ID/////////
+
         this.photographer = await this.usersApi.getPhotographer(this.id);
         this.medias = await this.usersApi.getMedias(this.id);
         
         ////////display de .photographer_detail et de son contenu///////
+
         this.$personnalDetails.innerHTML = "";
         const photoDetails = photoFactory(this.photographer)
         this.$personnalDetails.appendChild(photoDetails.getPhotoDetailsCardDOM())
 
         ////////display de #personnal_galerie et de son contenu/////////
+
         this.displayPhotographers()
         this.displayFilteredMedias()
         this.getTotalLikesCount()
         /////// PREVIOUS LIGHTBOX ////////
+
         const previousSetup = document.getElementById('previous')
 
         const previousHandler = ev => {
@@ -51,15 +56,16 @@ class PhotographerApp {
         ['click', 'keydown'].forEach(evType => {
             const customHandler = evType === 'keydown' ? ev => {
             if (ev.key === 'ArrowLeft') previousHandler()
-        } : previousHandler
-        if (evType === 'keydown') {
+            } : previousHandler
+            if (evType === 'keydown') {
             window.addEventListener(evType, customHandler)
-        } else {
+            } else {
             previousSetup.addEventListener(evType, customHandler)
         }
         })
 
         /////// NEXT LIGHTBOX ////////
+
         const nextSetup = document.getElementById('next')
 
         const nextHandler = ev => {
@@ -205,9 +211,6 @@ class PhotographerApp {
     }
 }
 
-const photographerApp = new PhotographerApp()
-photographerApp.main()
-
 const closeSetup = document.getElementById('close_onclick')
 
 const handler = ev => {
@@ -224,3 +227,7 @@ const handler = ev => {
     closeSetup.addEventListener(evType, customHandler)
 }
 })
+
+const photographerApp = new PhotographerApp()
+photographerApp.main()
+

@@ -12,37 +12,37 @@ function photoFactory(data) {
         const photographerDetail = document.createElement('div')
         const btnForm = document.createElement('button')
         
-        const h1 = document.createElement( 'h1' );
+        const photoName = document.createElement( 'h1' );
        
-        const p = document.createElement( 'p' );
-        const pun = document.createElement( 'p' );
+        const photoTagline = document.createElement( 'p' );
+        const cityCountry = document.createElement( 'p' );
 
-        const img = document.createElement('img');
+        const photoImg = document.createElement('img');
         
         
-        img.setAttribute("src", picture);
-        img.setAttribute("alt", name)
+        photoImg.setAttribute("src", picture);
+        photoImg.setAttribute("alt", name)
         
         btnForm.classList.add('contact_btn')
-        img.classList.add('photographer-img');
-        h1.classList.add('photograph_name')
-        p.classList.add('tagline')
-        pun.classList.add('city-country')
+        photoImg.classList.add('photographer-img');
+        photoName.classList.add('photograph_name')
+        photoTagline.classList.add('tagline')
+        cityCountry.classList.add('city-country')
 
         btnForm.setAttribute("onclick", "displayModal()")
 
         btnForm.innerText = "Contactez-moi"
-        p.innerHTML = tagline;
-        h1.innerText = name;
-        pun.innerText = city +','+' '+ country;
+        photoTagline.innerHTML = tagline;
+        photoName.innerText = name;
+        cityCountry.innerText = city +','+' '+ country;
 
         
-        photographerDetail.appendChild(h1);
-        photographerDetail.appendChild(pun);
-        photographerDetail.appendChild(p);
+        photographerDetail.appendChild(photoName);
+        photographerDetail.appendChild(cityCountry);
+        photographerDetail.appendChild(photoTagline);
         articleDetail.appendChild(photographerDetail)
         articleDetail.appendChild(btnForm)
-        articleDetail.appendChild(img);
+        articleDetail.appendChild(photoImg);
 
 
         /* 
@@ -81,8 +81,8 @@ function mediaFactory(medias) {
         const img = document.createElement('img');
         const videos = document.createElement('video');
         const source = document.createElement('source');
-        const pun = document.createElement('p');
-        const pdeux = document.createElement('p');
+        const mediaLikes = document.createElement('p');
+        const mediaTitle = document.createElement('p');
 
         articleMedia.id = 'article_media'
         divTitleLikes.id = 'divTitleLikes'
@@ -91,12 +91,12 @@ function mediaFactory(medias) {
         videos.classList.add('media_img')
 
         img.classList.add('media_img');
-        pun.classList.add('likes');
-        pdeux.classList.add('title');
+        mediaLikes.classList.add('likes');
+        mediaTitle.classList.add('title');
 
-        pdeux.innerHTML = title;
-        pun.setAttribute("data-media-id", id)
-        pun.innerHTML = likes + " " + '<i class="far fa-heart"></i>' ;
+        mediaTitle.innerHTML = title;
+        mediaLikes.setAttribute("data-media-id", id)
+        mediaLikes.innerHTML = likes + " " + '<i class="far fa-heart"></i>' ;
 
         if(image){
             img.setAttribute("src", imgMedia);
@@ -111,8 +111,8 @@ function mediaFactory(medias) {
             articleMedia.appendChild(videos)
         }
         articleMedia.appendChild(divTitleLikes)
-        divTitleLikes.appendChild(pdeux);
-        divTitleLikes.appendChild(pun);
+        divTitleLikes.appendChild(mediaTitle);
+        divTitleLikes.appendChild(mediaLikes);
 
         /////// RETURN ///////
 

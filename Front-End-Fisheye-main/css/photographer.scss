@@ -13,6 +13,10 @@ body {
 }
 
 @media (max-width: 700px) {
+    .personnal_galerie{
+        display: flex;
+        flex-direction: column;
+    }
     .contact_btn{
         margin: 0 30%;
         width: 49.5%;
